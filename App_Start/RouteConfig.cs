@@ -13,10 +13,32 @@ namespace Name_Game
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // Start Screen
+            routes.MapRoute(
+                name: "Start",
+                url: "{controller}/{action}",
+                defaults: new { controller = "Home", action = "StartScreen" }
+                );
+
+            // Game
+            routes.MapRoute(
+                name: "Play",
+                url: "{controller}/{action}",
+                defaults: new { controller = "Play", action = "PlayGameScreen" }
+                );
+
+            // End Game
+            routes.MapRoute(
+                name: "EndGame",
+                url: "EndGame/{action}",
+                defaults: new { controller = "EndGame", action = "EndGameScreen" }
+                );
+
+            // Default
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "GameStart", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "StartScreen", id = UrlParameter.Optional }
             );
         }
     }

@@ -17,5 +17,13 @@ namespace Name_Game
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        protected void Session_Start(Object sender, EventArgs e)
+        {
+            HttpContext.Current.Session.Add("numOfCorrectSelections", 0);
+            HttpContext.Current.Session.Add("numOfIncorrectSelections", 0);
+            HttpContext.Current.Session.Add("gameRound", 1);
+            HttpContext.Current.Session.Add("correctList", new List<string>());
+        }
     }
 }
